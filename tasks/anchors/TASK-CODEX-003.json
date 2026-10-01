@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "task_id": "TASK-CODEX-003",
+  "task_path": "tasks/completed/TASK-CODEX-003.md",
+  "task_sha256": "df87403f0b067399331ed17b2c913ad9b1f4ee54a3af0611fec0d3387ad925c7",
+  "req_references": [
+    "REQ-037",
+    "REQ-038",
+    "REQ-039"
+  ],
+  "bas_references": [
+    "BAS-036",
+    "BAS-037"
+  ],
+  "det_references": [
+    "DET-074",
+    "DET-075",
+    "DET-076",
+    "DET-086"
+  ],
+  "chk_references": [],
+  "recorded_source_fingerprint": "sha256:17c2537bddb5bace8c8d2d39ceb6dae97be77f6301b923733277b55fe7915b6d"
+}

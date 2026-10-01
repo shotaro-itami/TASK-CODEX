@@ -1,0 +1,51 @@
+{
+  "name": "study-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "architecture:check": "node scripts/architecture/check.mjs",
+    "architecture:test": "node --test tests/architecture/architecture-check.test.mjs",
+    "codex:profile": "node scripts/codex-profile.mjs",
+    "codex:task": "node scripts/codex-task.mjs",
+    "content:validate": "node scripts/content/validate.mjs",
+    "content:import": "node scripts/content/import.mjs",
+    "source:fetch": "uv run --project tools/content-pipeline content-pipeline fetch",
+    "content:normalize": "uv run --project tools/content-pipeline content-pipeline normalize",
+    "content:prepare-ai": "uv run --project tools/content-pipeline content-pipeline prepare-ai",
+    "content:prepare-concept-handoff": "uv run --project tools/content-pipeline content-pipeline prepare-concept-handoff",
+    "content:receive-concepts": "uv run --project tools/content-pipeline content-pipeline receive-concepts",
+    "content:register-concept-generation-session": "uv run --project tools/content-pipeline content-pipeline register-concept-generation-session",
+    "content:prepare-concept-verification": "uv run --project tools/content-pipeline content-pipeline prepare-concept-verification",
+    "content:receive-concept-verification": "uv run --project tools/content-pipeline content-pipeline receive-concept-verification",
+    "content:prepare-question-evidence-discovery": "uv run --project tools/content-pipeline content-pipeline prepare-question-evidence-discovery",
+    "content:receive-question-evidence-discovery": "uv run --project tools/content-pipeline content-pipeline receive-question-evidence-discovery",
+    "content:fetch-question-evidence": "uv run --project tools/content-pipeline content-pipeline fetch-question-evidence",
+    "content:build-question-evidence-pack": "uv run --project tools/content-pipeline content-pipeline build-question-evidence-pack",
+    "content-pipeline:test": "uv run --project tools/content-pipeline pytest tools/content-pipeline/tests",
+    "db:migrate": "node scripts/db/migrate.mjs",
+    "db:check": "node scripts/db/check.mjs",
+    "db:backup": "node scripts/db/backup.mjs",
+    "db:verify": "node scripts/db/verify.mjs",
+    "spec:pull": "node scripts/spec/pull.mjs",
+    "spec:sync": "node scripts/spec/sync.mjs",
+    "spec:check": "node scripts/spec/check.mjs",
+    "spec:check:remote": "node scripts/spec/check-remote.mjs",
+    "spec:update": "node scripts/spec/update.mjs",
+    "toolchain:check": "node scripts/toolchain/check.mjs",
+    "lint": "biome lint src scripts tests",
+    "maintain": "node scripts/maintenance/check.mjs",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit",
+    "test": "node --test",
+    "verify": "biome lint src scripts tests && node node_modules/typescript/bin/tsc --noEmit && node --test && node scripts/architecture/check.mjs && node scripts/toolchain/check.mjs && uv run --project tools/content-pipeline --locked pytest tools/content-pipeline/tests && node scripts/db/verify.mjs && node scripts/content/validate.mjs tests/fixtures/synthetic-curriculum.json && node scripts/spec/check.mjs"
+  },
+  "dependencies": {
+    "drizzle-orm": "1.0.0-rc.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@types/node": "26.4.1",
+    "typescript": "7.0.2"
+  }
+}

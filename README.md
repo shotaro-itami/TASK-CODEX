@@ -2,7 +2,39 @@
 
 `study-app`で完了したTASK-CODEX-001〜005について、提供する機能と処理内容をまとめた資料です。Codex CLIのprofile起動、TASK連携、scope guard、profile更新、自動profile選択をタスク単位で確認できます。
 
-このリポジトリは機能説明を掲載するためのものです。実装コード、実行コマンド、完了証跡の本体は[study-app](https://github.com/shotaro-itami/study-app)にあります。以下のコマンドはstudy-appのルートで実行します。
+このリポジトリには機能説明、完了TASK文書、TASK-CODEX-001〜005の実装コード・設定・テストを掲載しています。[study-app](https://github.com/shotaro-itami/study-app)の参照commitから成果物と必要な共通コードを抽出し、原本を変更せず保持しています。
+
+## 掲載している実装
+
+| 内容 | ファイル |
+| --- | --- |
+| profileの正本mapping | [.codex/execution-profiles.json](.codex/execution-profiles.json) |
+| profile launcher | [scripts/codex-profile.mjs](scripts/codex-profile.mjs) |
+| TASK launcher・起動前後のscope検査 | [scripts/codex-task.mjs](scripts/codex-task.mjs) |
+| 自動profile selector | [scripts/codex-profile-selection.mjs](scripts/codex-profile-selection.mjs) |
+| 共通parser・scope guard・仕様検査 | [scripts/spec/](scripts/spec/) |
+| profile・TASK・selectorテスト | [tests/](tests/)の`codex-*.test.mjs` |
+| scope・仕様governanceの関連回帰 | [tests/spec/](tests/spec/) |
+| TASK起動契約・運用説明 | [docs/codex-task.md](docs/codex-task.md) |
+| 完了時の履歴anchor | [tasks/anchors/](tasks/anchors/) |
+
+TASK-CODEX-004はmappingの更新、TASK-CODEX-005はselectorとTASK launcherの統合です。1つのファイルに複数TASKの成果が含まれる場合は、参照commit時点の最終版を掲載しています。
+
+### 関連テストの実行
+
+Node.js v24.19.0で確認したコードです。テストはNode.js標準機能を使うため、掲載範囲の検証にアプリの依存インストールは必要ありません。Gitを利用できる環境で、リポジトリのルートから実行します。
+
+```powershell
+node --test tests/codex-profile.test.mjs tests/codex-task.test.mjs tests/codex-profile-selection.test.mjs tests/spec/task-scope.test.mjs tests/spec/sync-governance.test.mjs
+```
+
+### 原本との関係・実行範囲
+
+`package.json`、`AGENTS.md`、仕様manifestと運用文書も原本を保持しています。そこに記載されているアプリ全体の`verify`、教材pipeline、DB、仕様同期に必要な製品コード・仕様データ一式は、この抽出リポジトリには含めていません。アプリ全体の検証と仕様同期はstudy-appで行います。
+
+profile launcherは`pnpm run codex:profile <profile>`で実行できます。実際の起動にはCodex CLIと対象modelを利用できる環境が必要です。TASK launcherは`pnpm run codex:task <TASK-ID>`で、対象repositoryのACTIVE TASK・manifest・scopeを検査して起動します。ここに掲載したTASK文書5件はCOMPLETEDのため、そのまま実行用ACTIVE TASKにはしません。
+
+`scripts/spec/`にはparserやscope検査の依存コード、および関連回帰テストに必要な仕様同期の共通コードを含めています。`tasks/active/.gitkeep`は空ディレクトリをGitに保持するための配置ファイルです。TASK-CODEX-006の実装は含めていません。
 
 ## 集計対象
 

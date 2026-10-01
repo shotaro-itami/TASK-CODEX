@@ -1,0 +1,14 @@
+{
+  "spec_version": "2026.09.01-v1",
+  "source_spreadsheet_id": "1R3VloB7XYOfHGZUGHHCCTcMXgvTUOxD9eHECfhg4vQ4",
+  "source_fingerprint": "sha256:17c2537bddb5bace8c8d2d39ceb6dae97be77f6301b923733277b55fe7915b6d",
+  "generated_at": "2026-09-07T08:59:40.807Z",
+  "generated_files_hash": "sha256:5f65c6cf8ea81a5bbb5e610846217ef2341d79e65b41970a903557fe5c4756ff",
+  "generated_files": [
+    "docs/product-specs/index.md",
+    "docs/product-specs/development-rules.md",
+    "docs/product-specs/content-management.md",
+    "docs/product-specs/content-pipeline.md",
+    "docs/traceability.yaml"
+  ]
+}
